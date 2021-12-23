@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} create {% endblock %}
+
+
+
+{% block content %}
+    <form action="{% url 'customer_create' %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+
+    <div class="form-group">
+
+
+        {{field.label}}
+        {% if field.errors %}
+        <div class="alert-danger">
+            {{field.errors}}
+        </div>
+        {% endif %}
+
+
+        <div class="col-md-8 col-lg-9">
+            {{field}}
+        </div>
+
+
+        {% endfor %}
+        <br>
+
+        <div >
+            <button  class="btn btn-primary" type="submit">save user</button>
+        </div>
+
+    </div>
+
+</form>
+{% endblock %}
+
+

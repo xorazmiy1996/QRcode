@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %} List of Users{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 bg-light text-right">
+            <a href="{% url 'customer_create' %}" class="btn btn-primary">Create customer</a>
+
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Full name</th>
+                        <th scope="col">Sellectiv status</th>
+                        <th scope="col">Data</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for post in page_object.object_list %}
+                    <tr>
+                        <th scope="row">{{ post.id }}</th>
+                        <td>{{ post.name }} {{ post.last }} {{ post.middle_name }}</td>
+                        <td>{{ post.selective_status }}</td>
+                        <td>{{ post.date_delivery |date:'d.m.Y H:i' }}</td>
+
+                        <td>
+                            <a href="{% url 'customer_delete' slug=post.slug %}"><i class="bi bi-trash"></i></a>
+                            <a href="{{ post.get_absolute_url }}"><i class="bi bi-file-earmark-pdf"></i></a>
+                            <a href="{% url 'customer_front' slug=post.slug %}"><i class="bi bi-eye"></i></a>
+                            <a href="{% url 'customer_update' slug=post.slug %}"><i class="bi bi-pencil-square"></i></a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

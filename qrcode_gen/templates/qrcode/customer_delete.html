@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'customer_delete'  slug=post.slug %}" method="post">
+
+     {% csrf_token %}
+
+    <h5> Aniq o'chirishni xoxlaysizmi:<b>{{post.name}} {{post.last}} {{post.middle_name}}</b></h5>
+
+
+    <a href="{% url 'customer_list_url' %}">Cancel</a>
+
+    <button type="submit" class="btn btn-primary">Post Delete</button>
+
+
+</form>
+{% endblock %}
+
+

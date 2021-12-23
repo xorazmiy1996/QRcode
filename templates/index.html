@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block title %} List of Users{% endblock %}
+
+
+{% block content %}
+
+    {% for customer in customers %}
+        <a href="{{ customer.get_absolute_url }}">{{ customer.full_name }}</a>
+        {{ customer.date_delivery }}
+        {{ customer.selective_status }}
+        {{ customer.result_date }}
+        {{ customer.date_of_birth }}
+        {{ customer.gender }}
+        {{ customer.address }}
+        {{ customer.id_service }}
+        {{ customer.biomaterial_date }}
+        <img src="{{ customer.image.url }}" alt="">
+    {% endfor %}
+
+{% endblock %}
