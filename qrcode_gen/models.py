@@ -20,8 +20,8 @@ SELECTIVE_STATUS = [
 
 ]
 GENDER = [
-    ('мужской', 'мужской'),
-    ('женщина', 'женщина'),
+    ('Мужской', 'Мужской'),
+    ('Женский', 'Женский'),
 
 ]
 
@@ -31,7 +31,7 @@ class Customer(models.Model):
 
     name = models.CharField(max_length=50)
     last = models.CharField(max_length=50)
-    middle_name = models.CharField(max_length=50)
+    middle_name = models.CharField(max_length=50, blank=True)
 
     selective_status = models.CharField(choices=SELECTIVE_STATUS, max_length=20)
     image = models.ImageField(upload_to='images/')
